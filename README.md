@@ -1,7 +1,7 @@
 Cilpss
 ======
 
-clipboads share. zsh tmux emacs etc...
+clipboads share. zsh tmux emacs vi etc...
 
 * zsh  5.0
 * tmux 1.8
@@ -11,18 +11,18 @@ clipboads share. zsh tmux emacs etc...
 Install
 ------
 
-get code
+### get code
 
 ```bsh
 cd ~
 git clone https://github.com/mukaer/clipss.git
-``
+```
 
-
+### zsh
 
 * `~/.zshrc`
 
-Recommendation RAMDISK .
+Recommendation to use RAMDISK .
 
 ```bsh
 export CLIPSS_PATH="~/clipss"
@@ -36,9 +36,15 @@ case "${OSTYPE}" in
 esac
 ```
 
+restart zsh
+
+```bash
+zsh
+```
+
+### tmux
 
 `~/.tmux.conf`
-
 
 ```conf
 ## clipss 
@@ -47,18 +53,19 @@ bind-key ]  run 'tmux load-buffer -- $CLIPSS_FILE;tmux paste-buffer --;'
 
 ```
 
+### emacs
 
 `.emacs`
 
 
 ```lisp
-;; clipss
 (add-to-list 'load-path (concat (getenv "CLIPSS_PATH") "/emacs"))
 (require 'clipss)
-(setq clipss-push (concat (getenv "CLIPSS_PATH") "/push.rb"))
-(setq clipss-file (getenv "CLIPSS_FILE"))
+(setq clipss-path (getenv "CLIPSS_PATH") )
+(clipss-init)
 ```
 
+### vim
 
 `.vimrc`
 
