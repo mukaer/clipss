@@ -16,6 +16,10 @@ Install
 ```bsh
 cd ~
 git clone https://github.com/mukaer/clipss.git
+cd clippss
+gem install bundle
+bundle install
+
 ```
 
 ### zsh

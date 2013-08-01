@@ -1,3 +1,4 @@
+Gemfile.lock
 log/*
 !log/.gitkeep
 tmp/*
