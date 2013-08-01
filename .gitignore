@@ -3,3 +3,4 @@ log/*
 !log/.gitkeep
 tmp/*
 !tmp/.gitkeep
+config/config.rb
