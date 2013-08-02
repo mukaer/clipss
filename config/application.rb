@@ -7,6 +7,7 @@ class Clipss
   #lib
   require "#{APP_ROOT}/lib/timediff"
 
+
   # gem
   TimeDiff.now(:req_gem1)
 #  require 'active_support/core_ext'
@@ -21,7 +22,7 @@ class Clipss
   require "#{APP_ROOT}/config/config.rb"  if File.file? "#{APP_ROOT}/config/config.rb"
   require "#{APP_ROOT}/config/env.rb"
 
-  require "#{APP_ROOT}/app/log"
+  require "#{APP_ROOT}/app/clipss_log"
   require "#{APP_ROOT}/app/push"
   require "#{APP_ROOT}/app/pop"
 

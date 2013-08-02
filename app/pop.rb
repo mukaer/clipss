@@ -1,5 +1,6 @@
 class Pop
 
+
   def log
 
 
@@ -24,7 +25,7 @@ class Pop
     # BUFFER FILE
     if buffer_path
       print File.read(buffer_path)
-    end    
+    end
   end
 
 

@@ -1,47 +1,57 @@
 class  Push
 
-  def get_data
-    t = Time.now
+  def self.run
+    ClipssLog.info("run")
+    ClipssLog.debug(Clipss.config)
+
+    @data = ""
+
+    runner = new
+    runner.argf_read
+    runner.write_file
   end
 
-  def log
-    t.strftime '%Y-%m-%d %H:%M:%S'
-    
-    # LOG FILE
-    if defined?(log_path) != nil
-      open(log_path,"a+") do |f|
-        f.print date
-        f.print data
-        f.print "\n"
-      end
-    end
+  def argf_read
+    ClipssLog.debug("get_data"){ @data }
+    @data  ||= ARGF.read
+  end
+
+  def get_data
+    ClipssLog.debug("get_data")
+    @data
+  end
+
+  def set_data(data)
+    ClipssLog.debug("set_data"){ @data }
+    @data  ||= data
   end
 
   def write_file
-    # BUFFER FILE
-    if buffer_path
-      open(buffer_path,"w+") do |f|
-        f.print data
+    clipss_file =  Clipss.config.clipss_file
+
+    if clipss_file
+      open(clipss_file,"w+") do |f|
+        f.print @data
+
       end
-    end    
+      ClipssLog.debug("write file succsess")
+    end
+
+    ClipssLog.debug("write_file end")
   end
 
+  # feature http
   def http_push
-    # feature http
     if defined?(url)
       # plugin  post http
-      require 'uri'
-      require 'httpclient'
+      # require 'uri'
+      # require 'httpclient'
 
       # HTTP POST
-      content = URI.escape(data)
+      content = URI.escape(@data)
       hc      = HTTPClient.new()
-
-      url = url + "?content=#{content}"
-
       hc.post_content(url,'content' => content)
     end
   end
-
 
 end
