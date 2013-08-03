@@ -1,30 +1,25 @@
 class Pop
 
-
-  def log
-
-
-    log_path = "#{APP_ROOT}/log/pop.log"
-
-
-    t = Time.now
-    date = t.strftime '%Y-%m-%d %H:%M:%S'
-
-    # LOG FILE
-    if defined?(log_path) != nil
-      open(log_path,"a+") do |f|
-        f.print "\n"
-      end
-    end
+  def self.run
+    runner = new
+    runner.read_file
+    print runner.get_data
   end
 
+  def get_data
+    ClipssLog.debug("get_data")
+    @data
+  end
 
-
-
-  def file
-    # BUFFER FILE
-    if buffer_path
-      print File.read(buffer_path)
+  def set_data(data)
+    ClipssLog.debug("set_data"){ @data }
+    @data ||=  data
+  end
+  
+  def read_file
+    clipss_file = Clipss.config.clipss_file
+    if clipss_file
+      @data = File.read(clipss_file)
     end
   end
 
