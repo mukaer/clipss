@@ -104,7 +104,7 @@ __clipss_make_str_fc_name () {
 # "^W"      C-w   backward-kill-word
 #                 kill-region
 clipss+backward-kill-word-or-kill-region () {
-    if [  $MARK -eq 0 ]; then
+    if [ $REGION_ACTIVE -eq 0 ]; then
 	zle clipss+backward-kill-word
     else
 	zle clipss+kill-region
