@@ -38,6 +38,15 @@ clipss_pop_wraps=( \
     yank
 )
 
+clipss_push () {
+    "$(_clipss_replace_homepath ${CLIPSS_PATH})/push.rb"
+}
+
+clipss_pop () {
+    "$(_clipss_replace_homepath ${CLIPSS_PATH})/pop.rb"
+    
+}
+
 
 _clipss_push () {
     echo $CUTBUFFER | "$(_clipss_replace_homepath ${CLIPSS_PATH})/push.rb" >& /dev/null
