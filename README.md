@@ -3,10 +3,10 @@ Cilpss
 
 clipboads share. zsh tmux emacs vi etc...
 
-* zsh  5.0
-* tmux 1.8
+* zsh   5.0.2
+* tmux  1.8
 * emacs 2.4
-* ruby 2.0
+* ruby  1.9
 
 Install
 ------
@@ -30,19 +30,21 @@ Recommendation to use RAMDISK .
 
 ```bsh
 export CLIPSS_PATH="~/clipss"
-case "${OSTYPE}" in
-    linux*)
-	export CLIPSS_FILE="/dev/shm/clipss_file.txt"
-	;;
-    *)
-	export CLIPSS_FILE="/tmp/clipss_file.txt"
-	;;
-esac
+export CLIPSS_FILE="/tmp/clipss_file.txt"
+source ${CLIPSS_PATH}/zsh/clipss.zsh
+clipss_initialize
+
+#bindkey
+bindkey '^Y'  clipss+yank
+bindkey '^k'  clipss+kill-line
+bindkey '^[w' clipss+copy-region-as-kill
+bindkey '^W'  clipss+backward-kill-word-or-kill-region
+
 ```
 
 restart zsh
 
-```bash
+```bsh
 zsh
 ```
 
