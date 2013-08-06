@@ -6,7 +6,7 @@ describe Clipss do
 
   it "default config 1" do
     clipss = Clipss.new
-    expect(clipss.config.env).to eq('prodction')
+    expect(clipss.config.env).to eq('production')
     expect(clipss.config.log_level).to eq('warn')
     expect(clipss.config.clipss_file).to eq(ENV["CLIPSS_PASS"])
   end
@@ -16,7 +16,7 @@ describe Clipss do
     end
     expect(Clipss.config.env).to eq('test')
     expect(Clipss.config.log_level).to eq('info')
-    expect(Clipss.config.clipss_file).to eq(ENV["CLIPSS_PASS"])
+    expect(Clipss.config.clipss_file).to eq(ENV["CLIPSS_FILE"])
   end
 
   it "configure & config  env production " do
