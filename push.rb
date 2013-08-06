@@ -1,54 +1,27 @@
 #!/usr/bin/env ruby
-# -*- coding: utf-8 -*-
 
-## test
-#   $ echo hoge | ./push.rb
-
-buffer_path  = ENV["CLIPSS_FILE"]
 
 APP_ROOT = File.expand_path "../" ,__FILE__
-log_path = "#{APP_ROOT}/log/push.log"
+require "#{APP_ROOT}/config/application.rb"
 
+TimeDiff.now(:main1)
+Push.run
+TimeDiff.now(:main2)
 
-# feature
-#url          = "http://192.168.0.2:8080/push/"
+log = <<EOF
+require milsec
+--main--
+#{TimeDiff.df(:main1,:main2)}
 
+--activesupport--
+#{TimeDiff.df(:req_gem1,:req_gem2)}
 
-t = Time.now
-date = t.strftime '%Y-%m-%d %H:%M:%S'
-data    = ARGF.read
+--httpclient--
+#{TimeDiff.df(:req_gem2,:req_gem3)}
 
-# LOG FILE
-if defined?(log_path) != nil
-  open(log_path,"a+") do |f|
-    f.print date
-    f.print data
-    f.print "\n"
-  end
-end
+--aap-----------
+#{TimeDiff.df(:req_app1,:req_app2)}
 
-
-# BUFFER FILE
-if buffer_path
-  open(buffer_path,"w+") do |f|
-      f.print data
-  end
-end
-
-
-# feature
-if defined?(url)
-  # plugin  post http
-  require 'uri'
-  require 'httpclient'
-
-  # HTTP POST
-  content = URI.escape(data)
-  hc      = HTTPClient.new()
-
-  url = url + "?content=#{content}"
-
-  hc.post_content(url,'content' => content)
-
-end
+EOF
+ClipssLog.debug(log)
 
