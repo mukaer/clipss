@@ -9,6 +9,8 @@ class Clipss
 
 
   # gem
+  require 'uri'
+  require 'httpclient'
   TimeDiff.now(:req_gem1)
 #  require 'active_support/core_ext'
   TimeDiff.now(:req_gem2)
@@ -23,6 +25,7 @@ class Clipss
   require "#{APP_ROOT}/config/env.rb"
 
   require "#{APP_ROOT}/app/clipss_log"
+  require "#{APP_ROOT}/app/file_base"  
   require "#{APP_ROOT}/app/push"
   require "#{APP_ROOT}/app/pop"
 
