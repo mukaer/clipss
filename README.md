@@ -34,7 +34,7 @@ export CLIPSS_FILE="/tmp/clipss_file.txt"
 source ${CLIPSS_PATH}/zsh/clipss.zsh
 clipss_initialize
 
-#bindkey
+
 bindkey '^Y'  clipss+yank
 bindkey '^k'  clipss+kill-line
 bindkey '^[w' clipss+copy-region-as-kill
@@ -53,8 +53,7 @@ zsh
 `~/.tmux.conf`
 
 ```conf
-## clipss 
-bind-key -t emacs-copy  M-w  copy-pipe "$CLIPSS_PATH/push.rb"  #tmux 1.8 conf gramma
+bind-key -t emacs-copy  M-w  copy-pipe "$CLIPSS_PATH/push.sh"  #tmux 1.8 conf gramma
 bind-key ]  run 'tmux load-buffer -- $CLIPSS_FILE;tmux paste-buffer --;'
 
 ```
@@ -77,9 +76,7 @@ bind-key ]  run 'tmux load-buffer -- $CLIPSS_FILE;tmux paste-buffer --;'
 
 
 ```conf
-if filereadable(expand( $CLIPSS_PATH . "/vim/clipss.vim"))
-    source  ${CLIPSS_PATH}/vim/clipss.vim
-    nmap yy yy:call Clipss_Push()<CR>
-    nmap p :call Clipss_Pop()<CR>
-endif
+source  ${CLIPSS_PATH}/vim/clipss.vim
+nmap yy yy:call Clipss_Push()<CR>
+nmap p :call Clipss_Pop()<CR>
 ```

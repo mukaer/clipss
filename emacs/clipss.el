@@ -3,6 +3,17 @@
  "~/clipss"
   "*send killing into clipbord")
 
+(defvar clipss-push
+  "/push.sh"
+  "push start prgram"
+)
+
+(defvar clipss-pop 
+  "/pop.sh"
+  "pop start prgram"
+)
+
+
 
 
 ;; defadvices ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -25,8 +36,8 @@
 )
 
 ;; functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun clipss-push () (concat clipss-path "/push.rb"))
-(defun clipss-pop  () (concat clipss-path "/pop.rb"))
+(defun clipss-push () (concat clipss-path clipss-push))
+(defun clipss-pop  () (concat clipss-path clipss-pop))
 
 (defun clipss-init () 
   (kill-new (shell-command-to-string (shell-command-to-string (clipss-pop)) ))

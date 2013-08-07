@@ -20,7 +20,7 @@
 
 # bind list
 
-bindkey	  emacs	
+bindkey	  emacs
 "^Y"	  C-y	yank
 "^K"	  C-k	kill-line
 "^W"	  C-w	backward-kill-word
@@ -38,22 +38,22 @@ clipss_pop_wraps=( \
     yank
 )
 
+
 clipss_push () {
-    "$(_clipss_replace_homepath ${CLIPSS_PATH})/push.rb"
+    "$(_clipss_replace_homepath ${CLIPSS_PATH})/push.sh"
 }
 
 clipss_pop () {
-    "$(_clipss_replace_homepath ${CLIPSS_PATH})/pop.rb"
-    
+    "$(_clipss_replace_homepath ${CLIPSS_PATH})/pop.sh"
+
 }
 
-
 _clipss_push () {
-    echo $CUTBUFFER | "$(_clipss_replace_homepath ${CLIPSS_PATH})/push.rb" >& /dev/null
+    echo $CUTBUFFER | clipss_push
 }
 
 _clipss_pop () {
-    CUTBUFFER=$("$(_clipss_replace_homepath ${CLIPSS_PATH})/pop.rb" )
+    CUTBUFFER="$(clipss_pop)"
 }
 
 # replace "~" to "${HOME}"
