@@ -1,2 +1,4 @@
 #!/usr/bin/env zsh
 cat > $CLIPSS_FILE
+
+[[ ${OSTYPE} =~ "^darwin" ]] && clipss_push_trigger_osx
