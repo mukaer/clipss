@@ -66,11 +66,11 @@ class ClipssLog
 
   def log_level
     case Clipss.config.log_level
-    when 'debug'
+    when :debug
       Logger::DEBUG
-    when 'info'
+    when :info
       Logger::INFO
-    when 'warn'
+    when :warn
       Logger::WARN
     else
       Logger::ERROR
