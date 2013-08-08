@@ -1,19 +1,17 @@
 ;; clipss        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar clipss-path
- "~/clipss"
+ (getenv "CLIPSS_PATH")
   "*send killing into clipbord")
 
 (defvar clipss-push
-  "/push.sh"
+  "/bin/clipss_push"
   "push start prgram"
 )
 
 (defvar clipss-pop 
-  "/pop.sh"
+  "/bin/clipss_pop"
   "pop start prgram"
 )
-
-
 
 
 ;; defadvices ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

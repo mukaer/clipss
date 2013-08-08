@@ -39,33 +39,15 @@ clipss_pop_wraps=( \
 )
 
 
-clipss_push () {
-    "$(_clipss_replace_homepath ${CLIPSS_PATH})/push.sh"
-}
-
-clipss_pop () {
-    "$(_clipss_replace_homepath ${CLIPSS_PATH})/pop.sh"
-
-}
-
 _clipss_push () {
     echo $CUTBUFFER | clipss_push
 }
+
 
 _clipss_pop () {
     CUTBUFFER="$(clipss_pop)"
 }
 
-# replace "~" to "${HOME}"
-_clipss_replace_homepath(){
-    local str
-    str="$(echo $1 | cut -d~ -f2)"
-    if [ -n $str ]; then
-	echo "${HOME}${str}"
-    else
-	echo "$1"
-    fi
-}
 
 _clipss_make_fc_push_wraps () {
     local fc
@@ -76,6 +58,7 @@ _clipss_make_fc_push_wraps () {
 
 }
 
+
 __clipss_make_str_fc_push () {
     cat <<EOF
 $(__clipss_make_str_fc_name ${1}) () {
@@ -85,6 +68,7 @@ $(__clipss_make_str_fc_name ${1}) () {
 EOF
 
 }
+
 
 _clipss_make_fc_pop_wraps () {
     local fc
@@ -105,6 +89,7 @@ EOF
 
 }
 
+
 __clipss_make_str_fc_name () {
     echo "clipss+${1}"
 }
@@ -123,6 +108,7 @@ clipss+backward-kill-word-or-kill-region () {
 
 
 clipss_initialize () {
+    export PATH="${CLIPSS_PATH}/bin:${PATH}"
     _clipss_make_fc_push_wraps
     _clipss_make_fc_pop_wraps
     zle -N clipss+backward-kill-word-or-kill-region

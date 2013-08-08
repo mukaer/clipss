@@ -29,7 +29,7 @@ bundle install
 Recommendation to use RAMDISK .
 
 ```bsh
-export CLIPSS_PATH="~/clipss"
+export CLIPSS_PATH="${HOME}/clipss"
 export CLIPSS_FILE="/tmp/clipss_file.txt"
 source ${CLIPSS_PATH}/zsh/clipss.zsh
 clipss_initialize
@@ -53,7 +53,7 @@ zsh
 `~/.tmux.conf`
 
 ```conf
-bind-key -t emacs-copy  M-w  copy-pipe "$CLIPSS_PATH/push.sh"  #tmux 1.8 conf gramma
+bind-key -t emacs-copy  M-w  copy-pipe "clipss_push"  #tmux 1.8 conf gramma
 bind-key ]  run 'tmux load-buffer -- $CLIPSS_FILE;tmux paste-buffer --;'
 
 ```
