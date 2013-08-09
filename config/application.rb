@@ -1,3 +1,5 @@
+APP||=:cli
+
 class Clipss
   # ruby default
   require 'pp'
@@ -29,12 +31,14 @@ class Clipss
   TimeDiff.now(:req_app2)
   #conf
 
+  if APP == :httpd
+    ENV["RACK_ENV"] ||= Clipss.config.env.to_s
+    require 'sinatra/base'
+    require 'sinatra/reloader' if Clipss.config.env == :development
+    require 'slim'
+    require "#{APP_ROOT}/app/clipss_httpd"
+  end
+
   TimeDiff.now(:req_app3)
 
 end
-
-
-
-
-
-

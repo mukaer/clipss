@@ -1,62 +1,8 @@
 #!/usr/bin/env ruby
-
+APP=:httpd
 APP_ROOT = File.expand_path "../../" ,__FILE__
-require "#{APP_ROOT}/config/application.rb"
+require "#{APP_ROOT}/config/application"
 
-require "sinatra"
-require 'sinatra/reloader' if Clipss.config.env == :development
-require 'slim'
-
-set :bind        , Clipss.config.bind
-set :port        , Clipss.config.port
-set :logging     , Clipss.config.logging
-set :dump_errors , Clipss.config.dump_errors
-
-get '/' do
-   slim :index
-end
-
-get '/form' do
-  slim :form
-end
-
-post '/push' do
-  @pushdata=params[:pushdata]
-  Push.httpd_run @pushdata
-  slim :push,:content_type => 'text'
-end
-
-get '/pop' do
-  @pop=Pop.httpd_run
-  slim :pop ,:content_type => 'text'
-end
+Rack::Handler::Thin.run ClipssHttpd.new ,:Port => Clipss.config.port
 
 
-__END__
-@@index
-p
-  a href="/push"
-    | Push
-p
-  a href="/pop"
-    | Pop
-p
-  a href="/form"
-    | Form
-
-@@push
-| -- pushdata --
-
-
-@@pop
-| #{@pop}
-
-
-@@form
-form name="push_form" method="post" action="/push"
-
-  div pushdata
-  textarea name="pushdata"
-
-  div
-  input    name="submit" type="submit" value="submit"

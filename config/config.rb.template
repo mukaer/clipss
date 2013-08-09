@@ -1,0 +1,5 @@
+Clipss.configure do
+  config.env   = :development
+  config.bind  = '0.0.0.0'
+  config.port  = '8085'
+end
