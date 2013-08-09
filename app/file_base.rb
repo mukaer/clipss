@@ -14,24 +14,39 @@ module FileBase
   def write_file
     clipss_file =  Clipss.config.clipss_file
 
-    if clipss_file
-      open(clipss_file,"w+") do |f|
-        f.print @data
+    @data = convert_data(@data)
 
+    if clipss_file
+      begin
+        open(clipss_file,"w+") do |f|
+          f.print @data
+        end
+      rescue
+        ClipssLog.error("faile don't write file ")
+      else
+        ClipssLog.debug("succsess write file")
       end
-      ClipssLog.debug("write file succsess")
+
     end
 
-    ClipssLog.debug("write_file end")
   end
 
   def read_file
     clipss_file = Clipss.config.clipss_file
     if clipss_file
-      @data = File.read(clipss_file)
+      begin
+        @data = File.read(clipss_file)
+      rescue
+        ClipssLog.error("faile don't read file ")
+      else
+        ClipssLog.debug("succsess read file")
+      end
+
     end
   end
 
-  
-end
+  def convert_data(data)
+    data.gsub("\r\n","\n")
+  end
 
+end
