@@ -2,3 +2,5 @@
 cat > $CLIPSS_FILE
 
 [[ ${OSTYPE} =~ "^darwin" ]] && clipss_push_trigger_osx
+
+[[ -n ${CLIPSS_PORT} ]] && curl http://localhost:${CLIPSS_PORT}/push_rsv >& /dev/null &

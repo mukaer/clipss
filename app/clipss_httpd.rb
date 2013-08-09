@@ -4,27 +4,33 @@ class ClipssHttpd < Sinatra::Base
     set :logging     , Clipss.config.logging
     set :dump_errors , Clipss.config.dump_errors
   end
-  
+
   get '/' do
      slim view_index
   end
-   
+
   get '/form' do
     slim view_form
   end
-   
+
   post '/push' do
+
     @pushdata=params[:pushdata]
     Push.httpd_run @pushdata
     slim view_push ,:content_type => 'text'
   end
-   
+
+  get '/push_rsv' do
+    PushRSV.run
+    slim view_push ,:content_type => 'text'
+  end
+
   get '/pop' do
     @pop=Pop.httpd_run
     slim view_pop ,:content_type => 'text'
 
   end
-  
+
 end
 
 
@@ -38,6 +44,9 @@ p
 p
   a href="/form" target="_blank"
     | SET
+p
+  a href="/push_rsv" target="_blank"
+    | PUSH_RSV RUN
 EOF
     }
   end
@@ -47,7 +56,7 @@ EOF
     Proc.new {"| -- OK set Clipss_FILE --"
     }
   end
-    
+
 
   def view_pop
     Proc.new{ "== @pop "}
@@ -66,6 +75,5 @@ EOF
     }
   end
 
-  
-end
 
+end

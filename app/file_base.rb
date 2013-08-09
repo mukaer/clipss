@@ -11,8 +11,9 @@ module FileBase
     @data  ||= data
   end
 
-  def write_file
+  def write_file(data = nil)
     clipss_file =  Clipss.config.clipss_file
+    @data = data || @data
 
     @data = convert_data(@data)
 
@@ -26,9 +27,8 @@ module FileBase
       else
         ClipssLog.debug("succsess write file")
       end
-
     end
-
+    return @data
   end
 
   def read_file
@@ -41,8 +41,8 @@ module FileBase
       else
         ClipssLog.debug("succsess read file")
       end
-
     end
+    return @data
   end
 
   def convert_data(data)

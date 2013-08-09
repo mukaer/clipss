@@ -16,12 +16,5 @@ describe Push do
     expect(obj.get_data).to eq(data)
   end
 
-  it "write_file" do
-    obj = Push.new
-    data = "this is test #{Time.now.to_i}"
-    obj.set_data(data)
-    obj.write_file
-    expect(File.read(Clipss.config.clipss_file)).to eq(data)
-  end
 
 end

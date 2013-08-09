@@ -58,6 +58,8 @@ Recommendation to use RAMDISK .`CLIPSS_FILE`
 ```bsh
 export CLIPSS_PATH="${HOME}/clipss"
 export CLIPSS_FILE="/tmp/clipss_file.txt"
+export CLIPSS_PORT="9116"
+export CLIPSS_REMOTE_SV="http://192.168.0.100:9116 http://192.168.0.101:9116"
 source ${CLIPSS_PATH}/zsh/clipss.zsh
 clipss_initialize
 

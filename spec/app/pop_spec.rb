@@ -16,17 +16,6 @@ describe Pop do
     expect(obj.get_data).to eq(data)
   end
 
-  it "should read_file" do
-    obj_pop  = Pop.new
-    obj_push = Push.new
 
-    data = "this is test #{Time.now.to_i}"
-    obj_push.set_data(data)
-    obj_push.write_file
-
-    obj_pop.read_file
-    expect(obj_pop.get_data).to eq(data)
-
-  end
 
 end

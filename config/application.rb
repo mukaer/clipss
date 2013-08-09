@@ -28,6 +28,7 @@ class Clipss
   require "#{APP_ROOT}/app/clipss_clipboard"
   require "#{APP_ROOT}/app/file_base"
   require "#{APP_ROOT}/app/push"
+  require "#{APP_ROOT}/app/push_rsv"
   require "#{APP_ROOT}/app/pop"
 
   TimeDiff.now(:req_app2)

@@ -16,7 +16,7 @@ describe ClipssConfig do
 
   it "should sinatra config" do
     cl = ClipssConfig.new
-    expect(cl.port).to        eq("8085")
+    expect(cl.port).to        eq("9116")
     expect(cl.bind).to        eq("0.0.0.0")
     expect(cl.logging).to     eq(false)
     expect(cl.dump_errors).to eq(false)
