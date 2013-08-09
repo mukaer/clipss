@@ -10,6 +10,8 @@ class  Push
     runner = new
     runner.argf_read
     runner.write_file
+    ClipssClipboard.copy data
+
   end
 
   def self.httpd_run(data)
@@ -17,14 +19,15 @@ class  Push
     runner = new
     runner.set_data  data
     runner.write_file
-    
+    ClipssClipboard.copy data
+
   end
 
   def argf_read
     ClipssLog.debug("get_data"){ @data }
     @data  ||= ARGF.read
   end
-  
+
 
   # feature http
   def self.http_push_run(url)
@@ -39,8 +42,8 @@ class  Push
       content = URI.escape(@data)
       hc      = HTTPClient.new()
       hc.post_content(url,'content' => content)
-    
-    
+
+
   end
 
 end

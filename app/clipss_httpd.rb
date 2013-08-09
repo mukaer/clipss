@@ -16,12 +16,13 @@ class ClipssHttpd < Sinatra::Base
   post '/push' do
     @pushdata=params[:pushdata]
     Push.httpd_run @pushdata
-    slim view_push,:content_type => 'text'
+    slim view_push ,:content_type => 'text'
   end
    
   get '/pop' do
     @pop=Pop.httpd_run
     slim view_pop ,:content_type => 'text'
+
   end
   
 end
@@ -49,7 +50,7 @@ EOF
     
 
   def view_pop
-    Proc.new{ "| #{@pop}"}
+    Proc.new{ "== @pop "}
   end
 
 

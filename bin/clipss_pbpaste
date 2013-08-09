@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+if which reattach-to-user-namespace >& /dev/null ; then
+    reattach-to-user-namespace -l zsh -c pbpaste
+else
+    pbpaste
+
+fi
