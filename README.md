@@ -1,7 +1,7 @@
 Cilpss
 ======
 
-Share clipboads or buffer. MacOSX Linux with zsh tmux emacs vi .
+Share clipboads or buffer. zsh tmux emacs vi with MacOSX Linux Windows .
 
 * MacOSX [tmux-MacOSX-pasteboard](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard)
 * zsh   4.3.11
@@ -11,14 +11,19 @@ Share clipboads or buffer. MacOSX Linux with zsh tmux emacs vi .
 * ruby  1.9
 
 
-Let's Use
+Let's Use. case local only
 -----
 
 1. zsh . input spell `hello world`. go a head and C-k (kill-line)
-
 2. switch emacs and C-y (yank) . curbuffer insert `hello world`.
-
 3. switch other vi,tmux,MacOSX and paste . insert `hello world`.
+
+
+Let's Use. case remote PC
+-----
+1. emacs. input spell `hello world`. go a head and C-k (kill-line)
+2. swith remote PC (windows) and paste.
+
 
 
 Install
@@ -31,8 +36,7 @@ cd ${HOME}
 git    clone https://github.com/mukaer/clipss.git
 cd     clippss
 gem    install bundle
-bundle install
-
+bundle install --without development
 ```
 
 ### MacOSX clipboard
@@ -111,3 +115,40 @@ nmap p :call Clipss_Pop()<CR>
 
 
 
+Config and Use. case remote
+---
+Adds remote server url. zsh `export CLIPSS_REMOTE_SV` or
+ruby config file `clipss/config/config.rb`.
+
+if use `config.rb`. overwirte setting value
+
+```bsh
+cd clipss/config/
+cp config.rb.template  config.rb
+```
+
+`clipss/config/config.rb`
+
+```ruby
+config.remote_svs  = ["http://192.168.0.100:9116",
+                        "http://192.168.0.101:9116"]
+```
+
+
+comand exec start clipss server. local and remote .
+
+```bsh
+clipss_httpd    #path clipss/bin/clips_httpd
+```
+
+access
+
+    http://localhost:9116
+
+
+
+More info
+--------
+
+* [setup_windows](/setup_windows.md)
+* [development](/development.md)

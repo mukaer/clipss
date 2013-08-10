@@ -1,10 +1,16 @@
 source "https://rubygems.org"
 
+if RUBY_PLATFORM.match(/win|mingw32/i)
+  gem "ffi"
+end
+
 gem "sinatra"
-gem "sinatra-contrib"
+gem "sinatra-contrib"    , :group => [:development]
 gem "slim"
 gem "httpclient"
 gem "clipboard"
 
-gem "rspec"
-gem "rspec-expectations"
+group :development do
+  gem "rspec"
+  gem "rspec-expectations"
+end

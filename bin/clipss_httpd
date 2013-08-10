@@ -3,6 +3,10 @@ APP=:httpd
 APP_ROOT = File.expand_path "../../" ,__FILE__
 require "#{APP_ROOT}/config/application"
 
-Rack::Handler::Thin.run ClipssHttpd.new ,:Port => Clipss.config.port
+if RUBY_PLATFORM.match(/win|mingw32/i)
+  Rack::Handler::WEBrick.run ClipssHttpd.new ,:Port => Clipss.config.port  
+else
+  Rack::Handler::Thin.run ClipssHttpd.new ,:Port => Clipss.config.port
+end
 
 
