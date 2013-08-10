@@ -1,5 +1,7 @@
 Clipss.configure do
-  config.env   = :development
-  config.bind  = '0.0.0.0'
-  config.port  = '8085'
+  config.env         = :development
+  config.clipss_file = ENV['CLIPSS_PASS'] || "/tmp/clispss_file.txt"
+  config.bind        = '0.0.0.0'
+  config.port        = ENV['CLIPSS_PORT'] || "9116"
+  config.remote_svs  = []      # ex  ["http://192.168.0.31:9116"]
 end

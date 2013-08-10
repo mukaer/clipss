@@ -43,5 +43,28 @@ describe Clipss do
     expect(Clipss.config.clipss_file).to eq(ENV['CLIPSS_PASS'])
   end
 
+  it "should conigure set custom val" do
+    v = :thistest
+    Clipss.configure do
+      config.env         = v
+      config.log_level   = v
+      config.clipss_file = v
+      config.port        = v
+      config.bind        = v
+      config.logging     = v
+      config.dump_errors = v
+      config.remote_svs  = v
+    end
+
+    expect(Clipss.config.env               ).to eq(v)
+    expect(Clipss.config.log_level         ).to eq(v)
+    expect(Clipss.config.clipss_file       ).to eq(v)
+    expect(Clipss.config.port              ).to eq(v)
+    expect(Clipss.config.bind              ).to eq(v)
+    expect(Clipss.config.logging           ).to eq(v)
+    expect(Clipss.config.dump_errors       ).to eq(v)
+    expect(Clipss.config.remote_svs        ).to eq(v)
+
+  end
 
 end
