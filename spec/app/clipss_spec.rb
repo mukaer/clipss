@@ -67,4 +67,22 @@ describe Clipss do
 
   end
 
+  it "should configre" do
+
+    Clipss.configure do
+      config.env         = :development
+      config.clipss_file = 'C:\tmp\clispss_file.txt'
+      config.bind        = 'localhost'
+      config.port        =  "9115"
+      config.remote_svs  = ["http://192.168.0.31:9116"]
+    end
+    
+    expect(Clipss.config.env               ).to eq(:development)
+    expect(Clipss.config.clipss_file       ).to eq('C:\tmp\clispss_file.txt')
+    expect(Clipss.config.port              ).to eq('9115')
+    expect(Clipss.config.bind              ).to eq('localhost')
+    expect(Clipss.config.remote_svs        ).to eq(["http://192.168.0.31:9116"])
+    
+  end
+
 end
