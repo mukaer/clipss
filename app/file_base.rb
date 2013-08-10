@@ -17,31 +17,28 @@ module FileBase
 
     @data = convert_data(@data)
 
-    if clipss_file
-      begin
-        open(clipss_file,"w+") do |f|
-          f.print @data
-        end
-      rescue
-        ClipssLog.error("faile don't write file ")
-      else
-        ClipssLog.debug("succsess write file")
-      end
+    begin
+      open(clipss_file,"w+") { |f|  f.print @data } 
+    rescue
+      ClipssLog.error("faile don't write file path:#{clipss_file}")
+    else
+      ClipssLog.debug("succsess write file")
     end
+
     return @data
   end
 
   def read_file
     clipss_file = Clipss.config.clipss_file
-    if clipss_file
-      begin
-        @data = File.read(clipss_file)
-      rescue
-        ClipssLog.error("faile don't read file ")
-      else
-        ClipssLog.debug("succsess read file")
-      end
+    
+    begin
+      @data = File.read(clipss_file)
+    rescue
+      ClipssLog.error("faile don't read file path:#{clipss_file}")
+    else
+      ClipssLog.debug("succsess read file")
     end
+
     return @data
   end
 
