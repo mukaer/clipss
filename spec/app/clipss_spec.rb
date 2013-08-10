@@ -4,43 +4,35 @@ require "#{path}/spec_helper"
 
 describe Clipss do
 
-  it "default config 1" do
+  it "default config " do
     clipss = Clipss.new
     expect(clipss.config.env).to eq(:production)
     expect(clipss.config.log_level).to eq(:warn)
-    expect(clipss.config.clipss_file).to eq(ENV["CLIPSS_PASS"])
-  end
-
-  it "default config 2" do
-    Clipss.configure do
-    end
-    expect(Clipss.config.env).to eq(:test)
-    expect(Clipss.config.log_level).to eq(:info)
-    expect(Clipss.config.clipss_file).to eq(ENV["CLIPSS_FILE"])
+    expect(clipss.config.clipss_file).to eq(ENV["CLIPSS_FILE"])
   end
 
   it "configure & config  env production " do
     Clipss.configure do
       config.env = :production
       config.log_level = :warn
-      config.clipss_file = ENV['CLIPSS_PASS']
+      config.clipss_file = ENV['CLIPSS_FILE']
     end
 
     expect(Clipss.config.env).to eq(:production)
     expect(Clipss.config.log_level).to eq(:warn)
-    expect(Clipss.config.clipss_file).to eq(ENV['CLIPSS_PASS'])
+    expect(Clipss.config.clipss_file).to eq(ENV['CLIPSS_FILE'])
   end
 
   it "configure & config  env test" do
     Clipss.configure do
       config.env = :test
       config.log_level = :info
-      config.clipss_file = ENV['CLIPSS_PASS']
+      config.clipss_file = ENV['CLIPSS_FILE']
     end
 
     expect(Clipss.config.env).to eq(:test)
     expect(Clipss.config.log_level).to eq(:info)
-    expect(Clipss.config.clipss_file).to eq(ENV['CLIPSS_PASS'])
+    expect(Clipss.config.clipss_file).to eq(ENV['CLIPSS_FILE'])
   end
 
   it "should conigure set custom val" do
@@ -76,13 +68,13 @@ describe Clipss do
       config.port        =  "9115"
       config.remote_svs  = ["http://192.168.0.31:9116"]
     end
-    
+
     expect(Clipss.config.env               ).to eq(:development)
     expect(Clipss.config.clipss_file       ).to eq('C:\tmp\clispss_file.txt')
     expect(Clipss.config.port              ).to eq('9115')
     expect(Clipss.config.bind              ).to eq('localhost')
     expect(Clipss.config.remote_svs        ).to eq(["http://192.168.0.31:9116"])
-    
+
   end
 
 end

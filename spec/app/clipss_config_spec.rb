@@ -9,7 +9,7 @@ describe ClipssConfig do
   end
 
   it "clipss_file" do
-    ENV['CLIPSS_PASS'] =  "/tmp/hoge"
+    ENV['CLIPSS_FILE'] =  "/tmp/hoge"
     cl = ClipssConfig.new
     expect(cl.clipss_file).to eq("/tmp/hoge")
   end

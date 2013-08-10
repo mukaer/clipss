@@ -6,7 +6,7 @@ class ClipssConfig
   def initialize()
     @env         = :production
     @log_level   = :warn
-    @clipss_file = ENV['CLIPSS_PASS']
+    @clipss_file = ENV['CLIPSS_FILE']
     @port        = ENV['CLIPSS_PORT'] || "9116"
     @bind        = "0.0.0.0"
     @logging     = false

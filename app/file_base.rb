@@ -20,7 +20,7 @@ module FileBase
     begin
       open(clipss_file,"w+") { |f|  f.print @data } 
     rescue
-      ClipssLog.error("faile don't write file path:#{clipss_file}")
+      ClipssLog.error("faile don't write file. path=#{clipss_file}")
     else
       ClipssLog.debug("succsess write file")
     end
@@ -34,7 +34,7 @@ module FileBase
     begin
       @data = File.read(clipss_file)
     rescue
-      ClipssLog.error("faile don't read file path:#{clipss_file}")
+      ClipssLog.error("faile don't read file. path=#{clipss_file}")
     else
       ClipssLog.debug("succsess read file")
     end
