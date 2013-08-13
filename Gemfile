@@ -13,4 +13,5 @@ gem "clipboard"
 group :development do
   gem "rspec"
   gem "rspec-expectations"
+  gem "webmock"
 end

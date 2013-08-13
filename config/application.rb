@@ -4,6 +4,8 @@ class Clipss
   # ruby default
   require 'pp'
   require 'logger'
+  require 'monitor'
+  require 'timeout'
 
   require "#{APP_ROOT}/app/timediff"
 
@@ -27,6 +29,8 @@ class Clipss
   require "#{APP_ROOT}/app/clipss_log"
   require "#{APP_ROOT}/app/clipss_clipboard"
   require "#{APP_ROOT}/app/file_base"
+  require "#{APP_ROOT}/app/cs_file"
+  require "#{APP_ROOT}/app/cs_httpclient"  
   require "#{APP_ROOT}/app/push"
   require "#{APP_ROOT}/app/push_rsv"
   require "#{APP_ROOT}/app/pop"
