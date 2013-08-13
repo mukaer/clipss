@@ -1,9 +1,9 @@
-path = File.expand_path "../../" ,__FILE__
-require "#{path}/spec_helper"
+require "spec_helper"
 
 
 describe Clipss do
 
+=begin
   it "default config " do
     clipss = Clipss.new
     expect(clipss.config.env).to eq(:production)
@@ -76,5 +76,5 @@ describe Clipss do
     expect(Clipss.config.remote_svs        ).to eq(["http://192.168.0.31:9116"])
 
   end
-
+=end
 end

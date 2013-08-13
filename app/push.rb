@@ -18,8 +18,11 @@ class  Push
 
     runner = new
     runner.set_data  data
-    runner.write_file
-    ClipssClipboard.copy data
+
+    Thread.start do
+      runner.write_file
+      ClipssClipboard.copy data
+    end
 
   end
 

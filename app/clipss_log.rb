@@ -1,6 +1,7 @@
 class ClipssLog
 
   attr_accessor :log,:logger,:logger_std
+  private_class_method :new
 
   def self.debug(msg = nil,&block)
     method_loglevel(__method__,caller.first,msg,&block)

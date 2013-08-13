@@ -1,6 +1,7 @@
 APP||=:cli
+APP_ROOT||= File.expand_path "../../" ,__FILE__
 
-class Clipss
+module Clipss
   # ruby default
   require 'pp'
   require 'logger'
@@ -20,20 +21,16 @@ class Clipss
   TimeDiff.now(:req_app1)
 
   # app
+  $LOAD_PATH.unshift  "#{APP_ROOT}/app"
+#  $LOAD_PATH.unshift  "#{APP_ROOT}/spec"  
   require "#{APP_ROOT}/app/clipss"
-  require "#{APP_ROOT}/app/clipss_config"
 
-  require "#{APP_ROOT}/config/config.rb"  if File.file? "#{APP_ROOT}/config/config.rb"
-  require "#{APP_ROOT}/config/env.rb"
 
-  require "#{APP_ROOT}/app/clipss_log"
-  require "#{APP_ROOT}/app/clipss_clipboard"
-  require "#{APP_ROOT}/app/file_base"
-  require "#{APP_ROOT}/app/cs_file"
-  require "#{APP_ROOT}/app/cs_httpclient"  
-  require "#{APP_ROOT}/app/push"
-  require "#{APP_ROOT}/app/push_rsv"
-  require "#{APP_ROOT}/app/pop"
+
+#  require "#{APP_ROOT}/config/config.rb"  if File.file? "#{APP_ROOT}/config/config.rb"
+#  require "#{APP_ROOT}/config/env.rb"
+
+
 
   TimeDiff.now(:req_app2)
   #conf
@@ -49,3 +46,4 @@ class Clipss
   TimeDiff.now(:req_app3)
 
 end
+
