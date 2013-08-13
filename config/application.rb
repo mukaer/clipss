@@ -22,7 +22,7 @@ module Clipss
   require "clipss/var"
   require "clipss/var/cs_file"
   require "clipss/var/clipboard"
-  #require "clipss/var/cs_httpclient"
+  require "clipss/var/remote_svs"
   #require "clipss/var/history"
 
   #require "clipss/push"
