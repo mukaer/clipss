@@ -6,7 +6,7 @@ require "clipss/config"
 #require "clipss/push"
 #require "clipss/push_rsv"
 #require "clipss/pop"
-
+#require "clipss/timediff"
 
 module Clipss
   extend self
@@ -20,5 +20,3 @@ module Clipss
     @config ||= Clipss::Config.new
   end
 end
-
-

@@ -1,15 +1,6 @@
 require "spec_helper"
 
-
 describe Clipss do
-
-=begin
-  it "default config " do
-    clipss = Clipss.new
-    expect(clipss.config.env).to eq(:production)
-    expect(clipss.config.log_level).to eq(:warn)
-    expect(clipss.config.clipss_file).to eq(ENV["CLIPSS_FILE"])
-  end
 
   it "configure & config  env production " do
     Clipss.configure do
@@ -76,5 +67,5 @@ describe Clipss do
     expect(Clipss.config.remote_svs        ).to eq(["http://192.168.0.31:9116"])
 
   end
-=end
+
 end
