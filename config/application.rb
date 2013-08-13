@@ -10,27 +10,30 @@ module Clipss
   require 'open3'
   require 'clipboard'
   require 'monitor'
-  require 'timeout'  
+  require 'timeout'
 
   # app
   $LOAD_PATH.unshift  "#{APP_ROOT}/app"
   require "clipss"
-  require "clipss/config"  
+  require "clipss/config"
   require "clipss/log"
   require "clipss/timediff"
-   
-  require "clipss/clipboard"
-  require "clipss/cs_file"
-  #require "clipss/httpclient"
+
+  require "clipss/var"
+  require "clipss/var/cs_file"
+  require "clipss/var/clipboard"
+  #require "clipss/var/cs_httpclient"
+  #require "clipss/var/history"
+
   #require "clipss/push"
   #require "clipss/push_rsv"
   #require "clipss/pop"
 
   # config
-  $LOAD_PATH.unshift  "#{APP_ROOT}/config"  
+  $LOAD_PATH.unshift  "#{APP_ROOT}/config"
   require "config.rb"  if File.file? "#{APP_ROOT}/config/config.rb"
   require "env.rb"
- 
+
   #conf
   if APP == :httpd
     ENV["RACK_ENV"] ||= Clipss.config.env.to_s
