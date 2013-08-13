@@ -1,5 +1,5 @@
 require "clipss/config"  
-#require "clipss/log"
+require "clipss/log"
 #require "clipss/clipboard"
 #require "clipss/file"
 #require "clipss/httpclient"  
