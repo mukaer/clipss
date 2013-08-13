@@ -17,7 +17,7 @@ module Clipss
   require "clipss"
   require "clipss/config"  
   require "clipss/log"
-  #require "clipss/timediff"
+  require "clipss/timediff"
    
   #require "clipss/clipboard"
   #require "clipss/file"
@@ -39,6 +39,5 @@ module Clipss
     require 'slim'
 #    require "clipss/httpd"
   end
- 
-end
 
+end
