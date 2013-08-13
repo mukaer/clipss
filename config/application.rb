@@ -19,7 +19,7 @@ module Clipss
   require "clipss/log"
   require "clipss/timediff"
    
-  #require "clipss/clipboard"
+  require "clipss/clipboard"
   #require "clipss/file"
   #require "clipss/httpclient"
   #require "clipss/push"
