@@ -20,7 +20,7 @@ module Clipss
   require "clipss/timediff"
    
   require "clipss/clipboard"
-  #require "clipss/file"
+  require "clipss/cs_file"
   #require "clipss/httpclient"
   #require "clipss/push"
   #require "clipss/push_rsv"
