@@ -1,5 +1,13 @@
 require 'spec_helper'
 
+Clipss.configure do
+  config.env         = :test
+  config.log_level   = :info
+  config.clipss_file = ENV["CLIPSS_FILE"]
+end
+
+Clipss::Log.log.logger = Logger.new("#{APP_ROOT}/log/#{Clipss.config.env}.log",7)
+
 describe 'Clipss::Log' do
 
   it 'should debug' do
