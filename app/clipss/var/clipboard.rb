@@ -1,8 +1,10 @@
 module Clipss
   module Var
     class Clipboard
+      @os = Clipss::Os.get
+
       def self.copy(data)
-        if get_os == :Mac
+        if @os == :Mac
           Open3.popen3( "#{APP_ROOT}/bin/clipss_pbcopy"){  |input,_,_|  input << data }
 
         else
@@ -11,7 +13,7 @@ module Clipss
       end
 
       def self.paste
-        if get_os == :Mac
+        if @os == :Mac
           `#{APP_ROOT}/bin/clipss_pbpaste`
         else
           ::Clipboard.paste
@@ -19,15 +21,7 @@ module Clipss
 
       end
 
-      def self.get_os
-        os = case RbConfig::CONFIG['host_os']
-             when /mac|darwin/       then :Mac
-             when /linux|bsd|cygwin/ then :Linux
-             when /mswin|mingw/      then :Windows
-             else
-             end
 
-      end
     end
   end
 end

@@ -18,6 +18,7 @@ module Clipss
   require "clipss/config"
   require "clipss/log"
   require "clipss/timediff"
+  require "clipss/os"
 
   require "clipss/var"
   require "clipss/var/cs_file"
@@ -28,6 +29,7 @@ module Clipss
   #require "clipss/push"
   #require "clipss/push_rsv"
   #require "clipss/pop"
+  #require "clipss/clip_cheker"
 
   # config
   $LOAD_PATH.unshift  "#{APP_ROOT}/config"
