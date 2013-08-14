@@ -1,15 +1,23 @@
 module Clipss
   module Var
+    extend self
 
-    def self.push
+    def update(data)
+
+      Var::History.push         data
+      Var::CsFile.write_file    data
+      Var::Clipboard.copy       data
+      Var::RemoteSvs.push_rsvs  data
+
     end
 
-    def self.pop
+    def get_data
+      res = Var::History.last
+      data = res.content           unless res.nil?
+      data = Var::CsFile.read_file if data.nil?
+      data = Var::Clipboard.paste  if data.nil?
+      data
     end
 
-
-    def self.all
-    end
-    
   end
 end

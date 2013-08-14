@@ -8,13 +8,15 @@ module Clipss
       @remote_svs = Clipss.config.remote_svs
 
       def push_rsvs(data)
+
+        Log.debug("@remote_svs = #{@remote_svs}")
         Log.debug("post date \n--data start--\n#{data}\n--data end--\n")
 
         @result = []
 
         #future thread Parallel
         @remote_svs.each do |url|
-          Timeout.timeout(1) do
+          Timeout.timeout(2) do
             @result.push  post_content(make_url_push(url),'pushdata' => data)
           end
         end
