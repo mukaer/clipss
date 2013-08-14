@@ -24,7 +24,7 @@ module Clipss
   require "clipss/var/cs_file"
   require "clipss/var/clipboard"
   require "clipss/var/remote_svs"
-  #require "clipss/var/history"
+  require "clipss/var/history"
 
   #require "clipss/push"
   #require "clipss/push_rsv"
