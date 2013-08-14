@@ -32,10 +32,16 @@ module Clipss
   require "clipss/var/remote_svs"
   require "clipss/var/history"
 
+  require "clipss/cmd"
+
+  #future
+  #require "clipss/clip_cheker"
+
+  #remove
   #require "clipss/push"
   #require "clipss/push_rsv"
   #require "clipss/pop"
-  #require "clipss/clip_cheker"
+
 
 
 

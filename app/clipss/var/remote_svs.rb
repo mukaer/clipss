@@ -8,11 +8,11 @@ module Clipss
       @remote_svs = Clipss.config.remote_svs
 
       def push_rsvs(data)
+        @remote_svs = Clipss.config.remote_svs
+        @result = []
 
         Log.debug("@remote_svs = #{@remote_svs}")
         Log.debug("post date \n--data start--\n#{data}\n--data end--\n")
-
-        @result = []
 
         #future thread Parallel
         @remote_svs.each do |url|

@@ -4,11 +4,6 @@ WebMock.allow_net_connect!
 require "spec_helper"
 
 
-Clipss::Var::RemoteSvs.remote_svs =  ["http://www.example.com:9116",
-                           "http://www.example.com:9117"]
-EX_URL = "www.example.com"
-EX_URL_REG = /.*example.*/
-
 describe Clipss::Var::RemoteSvs do
 
   it "should make_url_push" do
