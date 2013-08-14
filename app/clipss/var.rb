@@ -11,7 +11,7 @@ module Clipss
 
     end
 
-    def get_data
+    def get
       res = Var::History.last
       data = res.content           unless res.nil?
       data = Var::CsFile.read_file if data.nil?

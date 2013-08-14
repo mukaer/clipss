@@ -27,8 +27,8 @@ describe Clipss::Var do
 
   end
 
-  it "should get_data" do
-    data = Clipss::Var.get_data
+  it "should get" do
+    data = Clipss::Var.get
     expect(data.length).to  be>(1) 
 
   end
