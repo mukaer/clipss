@@ -26,7 +26,7 @@ describe Clipss::Var::History do
     Clipss::Var::History.push(str)
 
     expect(Clipss::Var::History.last.content).to eq(str)
-    expect(Clipss::Var::History.last.time).to   be>(time)
+    expect(Clipss::Var::History.last.date).to   be>(time)
   end
 
   it "should pop" do

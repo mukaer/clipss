@@ -5,13 +5,14 @@ module Clipss
       private_class_method :new
 
       @data          = []
-      @max_history  = 100
-      @lock         = Monitor.new
+      @struct        = Struct.new(:date, :content)
+      @max_history   = 100
+      @lock          = Monitor.new
 
       class << self
         def push(str)
           @lock.synchronize do
-            data = make_hash(str)
+            data = make_struct_data(str)
             @data.push  data
             @data.shift if @data.length > @max_history
           end
@@ -46,23 +47,11 @@ module Clipss
           @max_history = int
         end
 
-        def make_hash(str)
-          hash = { :time => Time.now, :content => str}
-          adds_method_abstract_data_type(hash)
+        def make_struct_data(str)
+          @struct.new(Time.now,str)
         end
-
-        def adds_method_abstract_data_type(hash)
-          hash.each_key do |key|
-            eval "def hash.#{key} ;   self[:#{key}] end"
-          end
-
-          hash
-        end
-
 
       end
-
-
     end
   end
 end
