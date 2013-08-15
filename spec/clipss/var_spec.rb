@@ -11,9 +11,9 @@ describe Clipss::Var do
 
     Clipss::Var.update data
 
-    expect(Clipss::Var::History.last.content).to eq(data)
-    expect(Clipss::Var::CsFile.read_file).to     eq(data)
-    expect(Clipss::Var::Clipboard.paste).to      eq(data)
+    expect(Clipss::Var::History.last.content).to      eq(data)
+    expect(Clipss::Var::CsFile.read).to               eq(data)
+    expect(Clipss::Var::Clipboard.paste).to           eq(data)
     expect(Clipss::Var::RemoteSvs.push_rsvs(data)).to eq(res)
 
   end

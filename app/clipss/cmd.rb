@@ -13,13 +13,13 @@ module Clipss
     end
 
     def push_http(data)
-      Var::History.push         data
-      Var::CsFile.write_file    data
-      Var::Clipboard.copy       data
+      Var::History.push    data
+      Var::CsFile.write    data
+      Var::Clipboard.copy  data
     end
 
     def push_http_rsv
-      data = Var::CsFile.read_file
+      data = Var::CsFile.read
       Var::History.push         data
       Var::RemoteSvs.push_rsvs  data
     end

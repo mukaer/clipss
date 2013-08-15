@@ -4,7 +4,7 @@ module Clipss
       @clipss_file = Clipss.config.clipss_file
       @data
      
-      def self.write_file(data)
+      def self.write(data)
         data = convert_data(data)
      
         begin
@@ -18,7 +18,7 @@ module Clipss
       end
      
      
-      def self.read_file
+      def self.read
         begin
           data = File.read(@clipss_file)
         rescue

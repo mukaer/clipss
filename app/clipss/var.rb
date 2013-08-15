@@ -5,7 +5,7 @@ module Clipss
     def update(data)
 
       Var::History.push         data
-      Var::CsFile.write_file    data
+      Var::CsFile.write         data
       Var::Clipboard.copy       data
       Var::RemoteSvs.push_rsvs  data
 
@@ -14,7 +14,7 @@ module Clipss
     def get
       res = Var::History.last
       data = res.content           unless res.nil?
-      data = Var::CsFile.read_file if data.nil?
+      data = Var::CsFile.read      if data.nil?
       data = Var::Clipboard.paste  if data.nil?
       data
     end
