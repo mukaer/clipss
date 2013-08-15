@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-if RUBY_PLATFORM.match(/win|mingw32/i)
+if RUBY_PLATFORM.match(/mswin|mingw/i)
   gem "ffi"
 end
 
@@ -13,5 +13,7 @@ gem "clipboard"
 group :development do
   gem "rspec"
   gem "rspec-expectations"
+  gem "rack-test"
+  gem "nokogiri"
   gem "webmock"
 end

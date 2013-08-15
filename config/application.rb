@@ -37,21 +37,15 @@ module Clipss
   #future
   #require "clipss/clip_cheker"
 
-  #remove
-  #require "clipss/push"
-  #require "clipss/push_rsv"
-  #require "clipss/pop"
-
-
-
-
   #conf
   if APP == :httpd
     ENV["RACK_ENV"] ||= Clipss.config.env.to_s
     require 'sinatra/base'
     require 'sinatra/reloader' if Clipss.config.env == :development
+    require 'nokogiri'         if Clipss.config.env.to_s.match(/development|test/)
+    require 'rack/test'        if Clipss.config.env.to_s.match(/development|test/)
     require 'slim'
-#    require "clipss/httpd"
+    require "clipss/httpd"
   end
 
 end
