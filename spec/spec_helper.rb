@@ -14,3 +14,4 @@ end
 
 EX_URL = "www.example.com"
 EX_URL_REG = /.*example.*/
+
