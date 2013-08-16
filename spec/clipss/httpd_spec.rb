@@ -28,7 +28,7 @@ describe 'description' do
   it "should post '/push' " do
     data= Time.now.to_s
     post '/push' ,{ :pushdata => data}
-    expect(Clipss::Var.get).to eq(data)
+    expect(Clipss::Var::All.get).to eq(data)
 
   end
 

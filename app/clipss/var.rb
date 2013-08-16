@@ -1,22 +1,12 @@
 module Clipss
   module Var
-    extend self
 
     def update(data)
-
-      Var::History.push         data
-      Var::CsFile.write         data
-      Var::Clipboard.copy       data
-      Var::RemoteSvs.push_rsvs  data
-
+      raise "abstract method update"
     end
 
     def get
-      res = Var::History.last
-      data = res.content           unless res.nil?
-      data = Var::CsFile.read      if data.nil?
-      data = Var::Clipboard.paste  if data.nil?
-      data
+      raise "abstract method get"
     end
 
   end

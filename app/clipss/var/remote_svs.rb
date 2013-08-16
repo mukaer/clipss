@@ -1,7 +1,7 @@
 module Clipss
   module Var
     module RemoteSvs
-      extend self
+      extend self,Var
       attr_accessor :remote_svs
 
       @hc         = HTTPClient.new()
@@ -40,6 +40,12 @@ module Clipss
       def make_url_push (url)
         "#{url}/push"
       end
+
+      def get
+        nil
+      end
+
+      alias update push_rsvs
 
     end
   end

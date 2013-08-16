@@ -27,6 +27,7 @@ module Clipss
   require "clipss/os"
 
   require "clipss/var"
+  require "clipss/var/all"
   require "clipss/var/cs_file"
   require "clipss/var/clipboard"
   require "clipss/var/remote_svs"
@@ -35,7 +36,7 @@ module Clipss
   require "clipss/cmd"
 
   #future
-  #require "clipss/clip_cheker"
+   #require "clipss/clip_wathcer"
 
   #conf
   if APP == :httpd

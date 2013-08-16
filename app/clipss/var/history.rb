@@ -1,7 +1,7 @@
 module Clipss
   module Var
     class History
-
+      extend Var
       private_class_method :new
 
       @data          = []
@@ -38,6 +38,10 @@ module Clipss
           @data
         end
 
+        def get
+          @data.last.content
+        end
+
         def max_history(int = nil)
           @max_history = int unless int.nil?
           @max_history
@@ -50,6 +54,8 @@ module Clipss
         def make_struct_data(str)
           @struct.new(Time.now,str)
         end
+
+        alias update push
 
       end
     end

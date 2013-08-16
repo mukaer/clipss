@@ -3,11 +3,11 @@ module Clipss
     extend self
 
     def push_cli(data)
-      Var.update    data
+      Var::All.update    data
     end
 
     def pop_cli
-      data = Var.get
+      data = Var::All.get
       print data
       data
     end
