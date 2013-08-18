@@ -5,5 +5,5 @@ RSpec test comand.
 
 ```bash
 cd clipss
-rspec spec/app/*
+rspec spec/clipss/*
 ```

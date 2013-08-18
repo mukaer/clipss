@@ -1,8 +1,9 @@
-======
 Cilpss
 ======
 
-Share clipboads or buffer. zsh tmux emacs vi with MacOSX Linux Windows .
+Clipboard Sync and Buffer Sync. zsh tmux emacs vi with MacOSX Linux Windows.
+
+you have to install.
 
 * MacOSX [tmux-MacOSX-pasteboard](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard)
 * zsh   4.3.11
@@ -20,10 +21,12 @@ Let's Use. case local only
 3. switch other vi,tmux,MacOSX and paste . insert `hello world`.
 
 
-Let's Use. case remote PC
+Let's Use. case remote PC & clipboard sync
 -----
 1. emacs. input spell `hello world`. go a head and C-k (kill-line)
 2. swith remote PC (windows) and paste.
+3. PC (windows) copy string `foo bar baz`.
+4. switch emacs and C-y (yank) . curbuffer insert `foo bar baz`.
 
 
 
@@ -33,11 +36,11 @@ Install
 ### get code
 
 ```bsh
-cd ${HOME}
-git    clone https://github.com/mukaer/clipss.git
-cd     clippss
-gem    install bundle
-bundle install --without development
+$ cd ${HOME}
+$ git    clone https://github.com/mukaer/clipss.git
+$ cd     clippss
+$ gem    install bundle
+$ bundle install --without development
 ```
 
 ### MacOSX clipboard
@@ -47,11 +50,11 @@ bundle install --without development
 example install
 
 ```bsh
-cd ~
-git  clone https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
-cd   tmux-MacOSX-pasteboard
-make reattach-to-user-namespace 
-cp   reattach-to-user-namespace  /usr/local/bin
+$ cd ~
+$ git  clone https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+$ cd   tmux-MacOSX-pasteboard
+$ make reattach-to-user-namespace 
+$ cp   reattach-to-user-namespace  /usr/local/bin
 ```
 
 ### zsh
@@ -73,27 +76,26 @@ bindkey '^Y'  clipss+yank
 bindkey '^k'  clipss+kill-line
 bindkey '^[w' clipss+copy-region-as-kill
 bindkey '^W'  clipss+backward-kill-word-or-kill-region
-
 ```
 restart zsh
 
 ```bsh
-zsh
+$ zsh
 ```
 
 ### tmux
 
-`~/.tmux.conf`
+* `~/.tmux.conf`
 
-```conf
+~~~
 bind-key -t emacs-copy  M-w  copy-pipe "${CLIPSS_PATH}/bin/clipss_push"  #tmux 1.8 conf gramma
 bind-key ]  run 'tmux load-buffer -- $CLIPSS_FILE;tmux paste-buffer --;'
+~~~
 
-```
 
 ### emacs
 
-`.emacs`
+* `~/.emacs`
 
 
 ```lisp
@@ -105,14 +107,13 @@ bind-key ]  run 'tmux load-buffer -- $CLIPSS_FILE;tmux paste-buffer --;'
 
 ### vim
 
-`.vimrc`
+* `~/.vimrc`
 
-
-```conf
+~~~
 source  ${CLIPSS_PATH}/vim/clipss.vim
 nmap yy yy:call Clipss_Push()<CR>
 nmap p :call Clipss_Pop()<CR>
-```
+~~~
 
 
 
@@ -121,14 +122,14 @@ Config and Use. case remote
 Adds remote server url. zsh `export CLIPSS_REMOTE_SV` or
 ruby config file `clipss/config/config.rb`.
 
-if use `config.rb`. overwirte setting value
+if use `config.rb`. overwirte setting variable
 
 ```bsh
-cd clipss/config/
-cp config.rb.template  config.rb
+$ cd clipss/config/
+$ cp config.rb.template  config.rb
 ```
 
-`clipss/config/config.rb`
+* `clipss/config/config.rb`
 
 ```ruby
 config.remote_svs  = ["http://192.168.0.100:9116",
@@ -139,7 +140,7 @@ config.remote_svs  = ["http://192.168.0.100:9116",
 comand exec start clipss server. local and remote .
 
 ```bsh
-clipss_httpd    #path clipss/bin/clips_httpd
+$ clipss_httpd    #path clipss/bin/clips_httpd
 ```
 
 access
