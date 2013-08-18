@@ -39,7 +39,8 @@ module Clipss
         end
 
         def get
-          @data.last.content
+          d = @data.last
+          d.nil? ? nil : d.content
         end
 
         def max_history(int = nil)

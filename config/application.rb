@@ -36,7 +36,7 @@ module Clipss
   require "clipss/cmd"
 
   #future
-   #require "clipss/clip_wathcer"
+  require "clipss/clipboard_watcher"
 
   #conf
   if APP == :httpd
