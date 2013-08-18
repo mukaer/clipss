@@ -11,15 +11,20 @@ module Clipss
         def copy(data)
           if @os == :Mac
             Open3.popen3( "#{APP_ROOT}/bin/clipss_pbcopy"){  |input,_,_|  input << data }
-
+            
           else
-            ::Clipboard.copy data
+            ::Clipboard.copy data            
           end
         end
 
         def paste
           if @os == :Mac
             `#{APP_ROOT}/bin/clipss_pbpaste`
+
+          elsif @os == :Windows
+            data = ::Clipboard.paste
+            data.encode('UTF-8')
+
           else
             ::Clipboard.paste
           end
