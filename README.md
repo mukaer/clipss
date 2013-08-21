@@ -1,7 +1,11 @@
 Cilpss
 ======
 
+[Japanese](http://mukaer.com/archives/2013/08/19/zsh_tmux_emacs_/)
+
+
 Clipboard Sync and Buffer Sync. zsh tmux emacs vi with MacOSX Linux Windows.
+
 
 you have to install.
 
