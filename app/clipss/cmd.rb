@@ -31,7 +31,7 @@ module Clipss
     end
 
     def pop_http
-      Var.get
+      Var::All.get
     end
 
   end
