@@ -1,5 +1,7 @@
 Cilpss
 ======
+[![Build Status](https://travis-ci.org/mukaer/clipss.png)](https://travis-ci.org/mukaer/clipss)
+
 
 [Japanese](http://mukaer.com/archives/2013/08/19/zsh_tmux_emacs_/)
 
@@ -14,7 +16,7 @@ you have to install.
 * tmux  1.8
 * emacs 2.4
 * vim   7.2
-* ruby  1.9
+* ruby  1.9 or 2.0
 
 
 Let's Use. case local only
@@ -44,7 +46,7 @@ $ cd ${HOME}
 $ git    clone https://github.com/mukaer/clipss.git
 $ cd     clippss
 $ gem    install bundle
-$ bundle install --without development
+$ bundle install --without development test
 ```
 
 ### MacOSX clipboard

@@ -10,7 +10,9 @@ gem "slim"
 gem "httpclient"
 gem "clipboard"
 
-group :development do
+
+group :development ,:test do
+  gem 'rake'
   gem "rspec"
   gem "rspec-expectations"
   gem "rack-test"
