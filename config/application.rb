@@ -12,7 +12,7 @@ module Clipss
   require 'monitor'
   require 'timeout'
 
-
+  # init
   $LOAD_PATH.unshift  "#{APP_ROOT}/app"
   require "clipss"
   require "clipss/config"
@@ -22,10 +22,12 @@ module Clipss
   require "config.rb"  if File.file? "#{APP_ROOT}/config/config.rb"
   require "env.rb"
 
+  # lib
   require "clipss/log"
   require "clipss/timediff"
   require "clipss/os"
 
+  # var
   require "clipss/var"
   require "clipss/var/all"
   require "clipss/var/cs_file"
@@ -34,11 +36,8 @@ module Clipss
   require "clipss/var/history"
 
   require "clipss/cmd"
-
-  #future
   require "clipss/clipboard_watcher"
 
-  #conf
   if APP == :httpd
     ENV["RACK_ENV"] ||= Clipss.config.env.to_s
     require 'sinatra/base'
