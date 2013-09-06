@@ -13,20 +13,22 @@ module Clipss
   require 'monitor'
   require 'timeout'
 
-
+  # init
   $LOAD_PATH.unshift  "#{APP_ROOT}/app"
   require 'clipss'
   require 'clipss/config'
 
   # config
   $LOAD_PATH.unshift  "#{APP_ROOT}/config"
-  require 'config.rb'  if File.file? "#{APP_ROOT}/config/config.rb"
+  require 'config.rb'  if File.file? "#{APP_ROOT}/config/config.rb" && APP != :spec
   require 'env.rb'
 
+  # lib  
   require 'clipss/log'
   require 'clipss/timediff'
   require 'clipss/os'
 
+  # var
   require 'clipss/var'
   require 'clipss/var/all'
   require 'clipss/var/cs_file'
@@ -48,5 +50,4 @@ module Clipss
     require 'slim'
     require 'clipss/httpd'
   end
-
 end

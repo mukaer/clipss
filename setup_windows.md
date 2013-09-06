@@ -51,7 +51,7 @@ clipss install & Use
 $ git    clone https://github.com/mukaer/clipss.git
 $ cd     clippss
 $ gem    install bundle
-$ bundle install --without development
+$ bundle install --without development test
 $ bin/clipss_httpd
 ```
 
