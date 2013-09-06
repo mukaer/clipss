@@ -3,10 +3,17 @@ Clipss.configure do
 #  config.env         = :test
   config.env         = :production
 
-  config.clipss_file = ENV['CLIPSS_FILE'] || "/tmp/clipss_file.txt"
-  config.clipss_file = 'C:\clipss_file.txt' if RUBY_PLATFORM.match(/win|mingw/i)
+  # clipss file
+  if RUBY_PLATFORM.match(/win|mingw/i)
+    config.clipss_file = ENV['CLIPSS_FILE'] || 'C:\clipss_file.txt'
+  else
+    config.clipss_file = ENV['CLIPSS_FILE'] || '/tmp/clipss_file.txt'
+  end
 
+  # httpd
   config.bind        = '0.0.0.0'
-  config.port        = ENV['CLIPSS_PORT'] || "9116"
-  config.remote_svs  = []      # ex  ["http://192.168.0.31:9116"]
+  config.port        = ENV['CLIPSS_PORT'] || '9116'
+
+  # example  ["http://192.168.0.31:9116"]
+  config.remote_svs  = []
 end

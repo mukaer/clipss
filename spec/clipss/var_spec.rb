@@ -6,7 +6,7 @@ describe Clipss::Var do
 
   end
 
-  it "should get" do
+  it 'should get' do
 
   end
 

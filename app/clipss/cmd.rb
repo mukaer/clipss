@@ -3,7 +3,6 @@ module Clipss
   # Cmd
   module Cmd
 
-
     def push_cli(data)
       Var::All.update    data
     end

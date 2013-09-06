@@ -11,7 +11,7 @@ module Clipss
       @lock          = Monitor.new
 
       class << self
-        attr_accessor :all, :max_history
+        attr_accessor :data, :max_history
 
         def push(str)
           @lock.synchronize do
@@ -47,6 +47,7 @@ module Clipss
         end
 
         alias_method :update, :push
+        alias_method :all,    :data
 
       end
     end

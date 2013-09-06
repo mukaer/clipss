@@ -84,7 +84,7 @@ EOF
     def view_history
       proc do <<EOF
 - @historys.each_with_index do |h,i|
-  div \#{i} \#{h.date} \#{h.content}
+    div \#{i} \#{h.date} \#{h.content}
 EOF
       end
     end

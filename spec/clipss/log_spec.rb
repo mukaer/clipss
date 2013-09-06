@@ -3,10 +3,11 @@ require 'spec_helper'
 Clipss.configure do
   config.env         = :test
   config.log_level   = :info
-  config.clipss_file = ENV["CLIPSS_FILE"]
+  config.clipss_file = ENV['CLIPSS_FILE']
 end
 
-Clipss::Log.log.logger = Logger.new("#{APP_ROOT}/log/#{Clipss.config.env}.log",7)
+path = "#{APP_ROOT}/log/#{Clipss.config.env}.log"
+Clipss::Log.log.logger = Logger.new(path, 7)
 
 describe 'Clipss::Log' do
 
@@ -44,5 +45,4 @@ describe 'Clipss::Log' do
     Clipss::Log.fatal(data)
     expect(File.readlines("#{APP_ROOT}/log/test.log").last).to match(data)
   end
-  
 end

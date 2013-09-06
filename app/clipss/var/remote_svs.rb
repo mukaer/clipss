@@ -43,8 +43,8 @@ module Clipss
         nil
       end
 
-      module_function :push_rsvs, :post_content, :make_url_push, :get
-      alias_method :update, :push_rsvs
+      alias_method    :update, :push_rsvs
+      module_function :push_rsvs, :post_content, :make_url_push, :update, :get
 
     end
   end

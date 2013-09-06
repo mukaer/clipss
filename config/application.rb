@@ -1,4 +1,4 @@
-APP ||= :cli
+APP      ||= :cli
 APP_ROOT ||= File.expand_path '../../', __FILE__
 
 # Clipss require
@@ -19,11 +19,12 @@ module Clipss
   require 'clipss/config'
 
   # config
-  $LOAD_PATH.unshift  "#{APP_ROOT}/config"
-  require 'config.rb'  if File.file? "#{APP_ROOT}/config/config.rb" && APP != :spec
+  app_config = "#{APP_ROOT}/config"
+  $LOAD_PATH.unshift  app_config
+  require 'config.rb' if File.file?("#{app_config}/config.rb") && APP != :spec
   require 'env.rb'
 
-  # lib  
+  # lib
   require 'clipss/log'
   require 'clipss/timediff'
   require 'clipss/os'
@@ -40,7 +41,7 @@ module Clipss
 
   require 'clipss/clipboard_watcher'
 
-  if APP == :httpd
+  if APP == :httpd || APP == :spec
     env = Clipss.config.env
     ENV['RACK_ENV'] ||= env.to_s
     require 'sinatra/base'

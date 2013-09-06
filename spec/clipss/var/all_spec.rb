@@ -3,9 +3,11 @@ require 'spec_helper'
 describe Clipss::Var::All do
 
   it 'should update' do
-    data = "This-is-test"
+    data = 'This-is-test'
 
-    stub_request(:post,EX_URL_REG).to_return{ |request| { :body => request.body} }
+    stub_request(:post, EX_URL_REG).to_return do |request|
+      { body: request.body }
+    end
     res = []
     2.times  { res.push  "pushdata=#{data}" }
 
@@ -18,9 +20,9 @@ describe Clipss::Var::All do
 
   end
 
-  it "should get" do
+  it 'should get' do
     data = Clipss::Var::All.get
-    expect(data.length).to  be>(1)
+    expect(data.length).to  be > (1)
 
   end
 

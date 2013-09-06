@@ -1,6 +1,6 @@
 # Clipss
 module Clipss
-  # Var
+  # Var is abstract
   module Var
 
     def update(data)
