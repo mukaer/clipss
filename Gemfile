@@ -16,4 +16,5 @@ group :development do
   gem "rack-test"
   gem "nokogiri"
   gem "webmock"
+  gem "rubocop"
 end

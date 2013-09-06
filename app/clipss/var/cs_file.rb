@@ -1,10 +1,10 @@
 module Clipss
   module Var
+    # CsFile
     class CsFile
       extend Var
       private_class_method :new
       @clipss_file = Clipss.config.clipss_file
-      @data
 
       class << self
 
@@ -12,15 +12,14 @@ module Clipss
           data = convert_data(data)
 
           begin
-            open(@clipss_file,"w+") { |f|  f.print data }
+            open(@clipss_file, 'w+') { |f|  f.print data }
           rescue
             Log.error("faile don't write file. path=#{@clipss_file}")
           else
-            Log.debug("succsess write file")
+            Log.debug('succsess write file')
           end
-          return data
+          data
         end
-
 
         def read
           begin
@@ -28,18 +27,18 @@ module Clipss
           rescue
             Log.error("faile don't read file. path=#{@clipss_file}")
           else
-            Log.debug("succsess read file")
+            Log.debug('succsess read file')
           end
 
-          return data
+          data
         end
 
         def convert_data(data)
-          data.gsub("\r\n","\n")
+          data.gsub("\r\n", "\n")
         end
 
-        alias update write
-        alias get    read
+        alias_method :update, :write
+        alias_method :get,    :read
       end
     end
   end

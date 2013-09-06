@@ -1,5 +1,5 @@
+# Clipss
 module Clipss
-  extend self
   attr_accessor :config
 
   def configure(&block)
@@ -9,4 +9,6 @@ module Clipss
   def config
     @config ||= Clipss::Config.new
   end
+
+  module_function :configure , :config
 end

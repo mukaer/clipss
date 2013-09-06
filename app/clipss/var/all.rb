@@ -1,5 +1,7 @@
 module Clipss
   module Var
+
+    # All
     class All
       extend Var
       private_class_method :new

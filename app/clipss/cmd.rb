@@ -1,6 +1,8 @@
+# Clipss
 module Clipss
+  # Cmd
   module Cmd
-    extend self
+
 
     def push_cli(data)
       Var::All.update    data
@@ -33,6 +35,14 @@ module Clipss
     def pop_http
       Var.get
     end
+
+    module_function(:push_cli ,
+                    :pop_cli ,
+                    :push_http ,
+                    :push_http_rsv ,
+                    :push_cwatcher  ,
+                    :pop_http
+                    )
 
   end
 end

@@ -1,5 +1,7 @@
 module Clipss
   module Var
+
+    # Clipboard
     class Clipboard
       extend Var
       private_class_method :new
@@ -10,10 +12,11 @@ module Clipss
 
         def copy(data)
           if @os == :Mac
-            Open3.popen3( "#{APP_ROOT}/bin/clipss_pbcopy"){  |input,_,_|  input << data }
-            
+            path = "#{APP_ROOT}/bin/clipss_pbcopy"
+            Open3.popen3(path) { |input, _, _| input << data }
+
           else
-            ::Clipboard.copy data            
+            ::Clipboard.copy data
           end
         end
 
@@ -31,8 +34,8 @@ module Clipss
 
         end
 
-        alias update copy
-        alias get    paste
+        alias_method :update, :copy
+        alias_method :get,    :paste
       end
 
     end

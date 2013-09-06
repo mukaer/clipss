@@ -1,5 +1,6 @@
 module Clipss
   module Var
+    # History
     class History
       extend Var
       private_class_method :new
@@ -10,6 +11,8 @@ module Clipss
       @lock          = Monitor.new
 
       class << self
+        attr_accessor :all, :max_history
+
         def push(str)
           @lock.synchronize do
             data = make_struct_data(str)
@@ -19,11 +22,11 @@ module Clipss
         end
 
         def pop
-          @lock.synchronize { @data.pop}
+          @lock.synchronize { @data.pop }
         end
 
         def shift
-          @lock.synchronize { @data.shift}
+          @lock.synchronize { @data.shift }
         end
 
         def last
@@ -34,29 +37,16 @@ module Clipss
           @data.length
         end
 
-        def all
-          @data
-        end
-
         def get
           d = @data.last
           d.nil? ? nil : d.content
         end
 
-        def max_history(int = nil)
-          @max_history = int unless int.nil?
-          @max_history
-        end
-
-        def max_history= (int)
-          @max_history = int
-        end
-
         def make_struct_data(str)
-          @struct.new(Time.now,str)
+          @struct.new(Time.now, str)
         end
 
-        alias update push
+        alias_method :update, :push
 
       end
     end

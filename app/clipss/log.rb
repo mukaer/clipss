@@ -1,57 +1,59 @@
+# Clipss
 module Clipss
+  # Log
   class Log
-    attr_accessor :log,:logger,:logger_std
+    attr_accessor :log , :logger , :logger_std
     private_class_method :new
 
-    def self.debug(msg = nil,&block)
-      method_loglevel(__method__,caller.first,msg,&block)
+    def self.debug(msg = nil , &block)
+      method_loglevel(__method__ , caller.first , msg , &block)
     end
 
-    def self.info(msg = nil,&block)
-      method_loglevel(__method__,caller.first,msg,&block)
+    def self.info(msg = nil , &block)
+      method_loglevel(__method__ , caller.first , msg , &block)
     end
 
-    def self.warn(msg = nil,&block)
-      method_loglevel(__method__,caller.first,msg,&block)
+    def self.warn(msg = nil , &block)
+      method_loglevel(__method__ , caller.first , msg , &block)
     end
 
-    def self.error(msg = nil,&block)
-      method_loglevel(__method__,caller.first,msg,&block)
+    def self.error(msg = nil , &block)
+      method_loglevel(__method__ , caller.first , msg , &block)
     end
 
-    def self.fatal(msg = nil,&block)
-      method_loglevel(__method__,caller.first,msg,&block)
+    def self.fatal(msg = nil , &block)
+      method_loglevel(__method__ , caller.first , msg , &block)
     end
 
-    def self.method_loglevel(level,cal,msg,&block)
+    def self.method_loglevel(level, cal, msg, &block)
       prog = parse_caller(cal)
       log.logger.progname     = prog
-      log.logger.send(level,msg,&block)
+      log.logger.send(level, msg, &block)
 
       if Clipss.config.env == 'development'
         log.logger_std.progname = prog
-        log.logger_std.send(level,msg,&block)
+        log.logger_std.send(level, msg, &block)
       end
     end
 
     def self.parse_caller(at)
       if /^(.+?):(\d+)(?::in `(.*)')?/ =~ at
-        file = $1
-        line = $2.to_i
-        method = $3
+        file = Regexp.last_match[1]
+        line = Regexp.last_match[2].to_i
+        method = Regexp.last_match[3]
         "#{file}:#{line}:#{method}"
       else
-        ""
+        ''
       end
     end
 
     def self.log
-      @log ||=new
+      @log ||= new
     end
 
     def logger
       if @logger.nil?
-        @logger       = Logger.new("#{APP_ROOT}/log/#{Clipss.config.env}.log",7)
+        @logger = Logger.new("#{APP_ROOT}/log/#{Clipss.config.env}.log", 7)
         @logger.level = log_level
       end
       @logger
