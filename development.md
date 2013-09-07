@@ -1,9 +1,22 @@
 Info Development
 ===============
 
+Ruby coding style
+----------------
+
+* [The Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
+
+check coding command
+```
+$ bundle exec rubocop
+```
+
+
+
 RSpec test comand.
+-----------------
 
 ```bash
-cd clipss
-bundle exec rspec spec
+$ cd clipss
+$ bundle exec rake
 ```

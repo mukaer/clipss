@@ -19,7 +19,7 @@ you have to install.
 * ruby  1.9 or 2.0
 
 
-Let's Use. case local only
+EX Let's Usage. case local only
 -----
 
 1. zsh . input spell `hello world`. go a head and C-k (kill-line)
@@ -27,7 +27,7 @@ Let's Use. case local only
 3. switch other vi,tmux,MacOSX and paste . insert `hello world`.
 
 
-Let's Use. case remote PC & clipboard sync
+EX Let's Usage. case remote PC & clipboard sync
 -----
 1. emacs. input spell `hello world`. go a head and C-k (kill-line)
 2. swith remote PC (windows) and paste.
@@ -36,7 +36,7 @@ Let's Use. case remote PC & clipboard sync
 
 
 
-Install
+Installation
 ------
 
 ### get code
@@ -123,7 +123,7 @@ nmap p :call Clipss_Pop()<CR>
 
 
 
-Config and Use. case remote
+Configuration and Usage. case remote
 ---
 Adds remote server url. zsh `export CLIPSS_REMOTE_SV` or
 ruby config file `clipss/config/config.rb`.
@@ -138,8 +138,8 @@ $ cp config.rb.template  config.rb
 * `clipss/config/config.rb`
 
 ```ruby
-config.remote_svs  = ["http://192.168.0.100:9116",
-                        "http://192.168.0.101:9116"]
+config.remote_svs  = ['http://192.168.0.100:9116",
+                        "http://192.168.0.101:9116']
 ```
 
 
