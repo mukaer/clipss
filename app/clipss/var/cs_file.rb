@@ -9,7 +9,6 @@ module Clipss
       class << self
 
         def write(data)
-          data = convert_data(data)
 
           begin
             open(@clipss_file, 'w+') { |f|  f.print data }

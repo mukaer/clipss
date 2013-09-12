@@ -16,4 +16,7 @@ group :development , :test do
   gem 'nokogiri'
   gem 'webmock'
   gem 'rubocop'
+  gem 'pry'
+  gem 'pry-doc'
+  gem 'debugger-pry',  require: 'debugger/pry'
 end

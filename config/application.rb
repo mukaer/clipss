@@ -28,6 +28,7 @@ module Clipss
   require 'clipss/log'
   require 'clipss/timediff'
   require 'clipss/os'
+  require 'clipss/converter'
 
   # var
   require 'clipss/var'
@@ -41,8 +42,8 @@ module Clipss
 
   require 'clipss/clipboard_watcher'
 
+  env = Clipss.config.env
   if APP == :httpd || APP == :spec
-    env = Clipss.config.env
     ENV['RACK_ENV'] ||= env.to_s
     require 'sinatra/base'
     require 'sinatra/reloader' if env == :development
@@ -50,5 +51,11 @@ module Clipss
     require 'rack/test'        if env.to_s.match(/development|test/)
     require 'slim'
     require 'clipss/httpd'
+  end
+
+  if env == :development
+    require 'pry'
+    require 'pry-doc'
+    require 'debugger/pry'
   end
 end

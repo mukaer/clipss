@@ -14,9 +14,10 @@ module Clipss
     end
 
     def push_http(data)
-      Var::History.update    data
-      Var::CsFile.update     data
-      Var::Clipboard.update  data
+      data = Converter.post_esc data
+      Var::History.update       data
+      Var::CsFile.update        data
+      Var::Clipboard.update     data
     end
 
     def push_http_rsv

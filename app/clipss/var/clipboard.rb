@@ -12,6 +12,7 @@ module Clipss
 
         def copy(data)
           if @os == :Mac
+            data = Converter.mac_clipboard_esc(data)
             path = "#{APP_ROOT}/bin/clipss_pbcopy"
             Open3.popen3(path) { |input, _, _| input << data }
 
