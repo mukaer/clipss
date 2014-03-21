@@ -8,6 +8,9 @@ gem 'slim'
 gem 'httpclient'
 gem 'clipboard'
 
+# httpd
+gem 'thin' if RbConfig::CONFIG['host_os'].match(/mac|darwin|linux|bsd|cygwin/)
+
 group :development , :test do
   gem 'rake'
   gem 'rspec'
