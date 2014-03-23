@@ -1,6 +1,14 @@
 Info Development
 ===============
 
+Installation
+-----------
+
+```
+bundle install --without production
+```
+
+
 Ruby coding style
 ----------------
 
