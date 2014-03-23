@@ -23,7 +23,8 @@ module Clipss
 
         def paste
           if @os == :Mac
-            `#{APP_ROOT}/bin/clipss_pbpaste`
+            data = `#{APP_ROOT}/bin/clipss_pbpaste`
+            data.encode('UTF-8')
 
           elsif @os == :Windows
             data = ::Clipboard.paste
