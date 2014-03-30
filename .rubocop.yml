@@ -1,4 +1,7 @@
 # This is the configuration used to check the rubocop source code.
 
+Encoding:
+  Enabled: false
+
 MethodLength:
   Max: 30
