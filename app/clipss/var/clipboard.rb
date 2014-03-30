@@ -8,7 +8,18 @@ module Clipss
 
       @os = Clipss::Os.get
 
+      if @os == :Linux
+        if    system('which xclip >/dev/null 2>&1')
+          @check = true
+        elsif system('which xsel  >/dev/null 2>&1')
+          @check = true
+        else
+          @check = false
+        end
+      end
+
       class << self
+        attr_accessor :check
 
         def copy(data)
           if @os == :Mac
@@ -17,7 +28,7 @@ module Clipss
             Open3.popen3(path) { |input, _, _| input << data }
 
           else
-            ::Clipboard.copy data
+            ::Clipboard.copy data if @check
           end
         end
 
@@ -31,7 +42,7 @@ module Clipss
             data.encode('UTF-8')
 
           else
-            ::Clipboard.paste
+            ::Clipboard.paste if @check
           end
 
         end

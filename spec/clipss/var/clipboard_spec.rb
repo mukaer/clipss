@@ -9,4 +9,4 @@ describe Clipss::Var::Clipboard do
 
   end
 
-end
+end if Clipss::Var::Clipboard.check

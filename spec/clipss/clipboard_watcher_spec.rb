@@ -16,4 +16,4 @@ describe Clipss::ClipboardWatcher do
 
   end
 
-end
+end if Clipss::Var::Clipboard.check

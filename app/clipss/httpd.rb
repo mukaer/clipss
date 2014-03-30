@@ -6,7 +6,7 @@ module Clipss
       register Sinatra::Reloader if Clipss.config.env == :development
       set :logging     , Clipss.config.logging
       set :dump_errors , Clipss.config.dump_errors
-      ClipboardWatcher.run
+      ClipboardWatcher.run if Clipss::Var::Clipboard.check
     end
 
     get '/' do

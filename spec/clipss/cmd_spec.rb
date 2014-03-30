@@ -24,8 +24,11 @@ describe Clipss::Cmd do
     Clipss::Cmd.push_http data
 
     expect(Clipss::Var::History.last.content).to eq(data)
-    expect(Clipss::Var::CsFile.read).to     eq(data)
-    expect(Clipss::Var::Clipboard.paste).to      eq(data)
+    expect(Clipss::Var::CsFile.read).to          eq(data)
+
+    if Clipss::Var::Clipboard.check
+      expect(Clipss::Var::Clipboard.paste).to      eq(data)
+    end
   end
 
   it 'should push_http_rsv' do

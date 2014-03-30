@@ -15,7 +15,9 @@ describe Clipss::Var::All do
 
     expect(Clipss::Var::History.last.content).to      eq(data)
     expect(Clipss::Var::CsFile.read).to               eq(data)
-    expect(Clipss::Var::Clipboard.paste).to           eq(data)
+    if Clipss::Var::Clipboard.check
+      expect(Clipss::Var::Clipboard.paste).to           eq(data)
+    end
     expect(Clipss::Var::RemoteSvs.push_rsvs(data)).to eq(res)
 
   end
