@@ -8,13 +8,16 @@ module Clipss
 
       @os = Clipss::Os.get
 
-      if @os == :Linux
+      @check = case @os
+      when :Windows then true
+      when :Mac     then true
+      when :Linux
         if    system('which xclip >/dev/null 2>&1')
-          @check = true
+          true
         elsif system('which xsel  >/dev/null 2>&1')
-          @check = true
+          true
         else
-          @check = false
+          false
         end
       end
 
