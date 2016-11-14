@@ -17,13 +17,13 @@
 ;; defadvices ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;C-w
 (defadvice kill-region
-  (before get_killing (start end) activate)
+  (before get_killing (start end &rest rest) activate)
   (send_killing start end )
 )
 
 ;M-w
 (defadvice copy-region-as-kill
-  (before get_killing (start end) activate)
+  (before get_killing (start end &rest rest) activate)
   (send_killing start end )
 )
 
