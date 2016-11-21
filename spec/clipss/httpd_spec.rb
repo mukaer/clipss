@@ -9,7 +9,7 @@ describe 'description' do
 
   it 'should get "/" response.ok? ' do
     get '/'
-    expect(last_response.ok?).to be_true
+    expect(last_response.ok?).to be true
   end
 
   it 'should get "/" a contents' do

@@ -14,9 +14,9 @@ you have to install.
 * MacOSX [tmux-MacOSX-pasteboard](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard)
 * zsh   4.3.11
 * tmux  1.8
-* emacs 2.4
+* emacs 25
 * vim   7.2
-* ruby  1.9 or 2.0
+* ruby  2.3
 
 
 EX Let's Usage. case local only
@@ -138,8 +138,8 @@ $ cp config.rb.template  config.rb
 * `clipss/config/config.rb`
 
 ```ruby
-config.remote_svs  = ['http://192.168.0.100:9116",
-                        "http://192.168.0.101:9116']
+config.remote_svs  = ["http://192.168.0.100:9116",
+                      "http://192.168.0.101:9116"]
 ```
 
 
