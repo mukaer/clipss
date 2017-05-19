@@ -12,11 +12,11 @@ Clipboard Sync and Buffer Sync. zsh tmux emacs vi with MacOSX Linux Windows.
 you have to install.
 
 * MacOSX [tmux-MacOSX-pasteboard](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard)
-* zsh   4.3.11
-* tmux  1.8
+* zsh   5.3
+* tmux  2.4
 * emacs 25
 * vim   7.2
-* ruby  2.3
+* ruby  2.4
 
 
 EX Let's Usage. case local only
@@ -93,10 +93,11 @@ $ zsh
 
 * `~/.tmux.conf`
 
-~~~
-bind-key -t emacs-copy  M-w  copy-pipe "${CLIPSS_PATH}/bin/clipss_push"  #tmux 1.8 conf gramma
+
+``` shell
+bind-key -T copy-mode  M-w  send-keys -X copy-pipe-and-cancel "${CLIPSS_PATH}/bin/clipss_push"  #tmux 2.4 conf gramma
 bind-key ]  run 'tmux load-buffer -- $CLIPSS_FILE;tmux paste-buffer --;'
-~~~
+```
 
 
 ### emacs
