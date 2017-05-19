@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+which xclip >& /dev/null && cat $CLIPSS_FILE | xclip
+
