@@ -3,8 +3,16 @@ APP=:httpd
 APP_ROOT = File.expand_path "../../" ,__FILE__
 require "#{APP_ROOT}/config/application"
 
+bind = Clipss.config.bind
+port = Clipss.config.port
+
+options = { Host: bind ,Port: port}
+
+p "bind #{bind}"
 if Clipss::Os.get == :Windows
-  Rack::Handler::WEBrick.run Clipss::Httpd.new ,:Port => Clipss.config.port
+  Rack::Handler::WEBrick.run Clipss::Httpd.new , options
+
 else
-  Rack::Handler::Thin.run    Clipss::Httpd.new ,:Port => Clipss.config.port
+  Rack::Handler::Thin.run    Clipss::Httpd.new , options
+
 end
