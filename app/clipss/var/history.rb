@@ -14,11 +14,12 @@ module Clipss
         attr_accessor :data, :max_history
 
         def push(str)
+          data = make_struct_data(str)
           @lock.synchronize do
-            data = make_struct_data(str)
             @data.push  data
-            @data.shift if @data.length > @max_history
           end
+
+          @data.shift if @data.length > @max_history
         end
 
         def pop
