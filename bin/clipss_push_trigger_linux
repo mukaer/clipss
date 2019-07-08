@@ -1,4 +1,12 @@
 #!/usr/bin/env zsh
 
-which xclip >& /dev/null && cat $CLIPSS_FILE | xclip
+if [ -n $DISPLAY ] ; then
+  return 1
+fi
 
+which xclip >& /dev/null
+if [ $? -eq 1 ]  ; then
+  return 1
+fi
+
+cat $CLIPSS_FILE | xclip
