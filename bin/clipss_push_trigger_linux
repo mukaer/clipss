@@ -9,4 +9,4 @@ if [ $? -eq 1 ]  ; then
   return 1
 fi
 
-cat $CLIPSS_FILE | xclip
+cat $CLIPSS_FILE | xclip -sel clip
