@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [ -n $DISPLAY ] ; then
+if [ -z $DISPLAY ] ; then
   return 1
 fi
 
