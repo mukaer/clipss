@@ -12,11 +12,11 @@ Clipboard Sync and Buffer Sync. zsh tmux emacs vi with MacOSX Linux Windows.
 you have to install.
 
 * MacOSX [tmux-MacOSX-pasteboard](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard)
-* zsh   5.3
-* tmux  2.4
-* emacs 25
+* zsh   5.8
+* tmux  3.2
+* emacs 27
 * vim   7.2
-* ruby  2.4
+* ruby  3.1
 
 
 EX Let's Usage. case local only

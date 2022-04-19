@@ -10,9 +10,9 @@ options = { Host: bind ,Port: port}
 
 p "bind #{bind}"
 if Clipss::Os.get == :Windows
-  Rack::Handler::WEBrick.run Clipss::Httpd.new , options
+  Rack::Handler::WEBrick.run Clipss::Httpd.new , **options
 
 else
-  Rack::Handler::Thin.run    Clipss::Httpd.new , options
+  Rack::Handler::Thin.run    Clipss::Httpd.new , **options
 
 end
